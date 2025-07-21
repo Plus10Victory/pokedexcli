@@ -2,7 +2,6 @@ package main
 
 import (
 	"fmt"
-	"strings"
 )
 
 func main() {
@@ -11,8 +10,4 @@ func main() {
 	for _, word := range cleanInput(text) {
 		fmt.Println(word)
 	}
-}
-
-func cleanInput(text string) []string {
-	return strings.Fields(strings.ToLower(text))
 }
