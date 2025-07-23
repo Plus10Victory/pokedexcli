@@ -5,6 +5,8 @@ import (
 	"fmt"
 	"os"
 	"strings"
+
+	"github.com/Plus10Victory/pokedexcli/cliCommands"
 )
 
 func startRepl() {
@@ -20,12 +22,12 @@ func startRepl() {
 
 		commandName := words[0]
 
-		command, exists := supportedCommands[commandName]
+		command, exists := cliCommands.GetCommands()[commandName]
 		if !exists {
 			fmt.Println("Unknown command")
 			continue
 		} else {
-			err := command.callback()
+			err := command.Callback()
 			if err != nil {
 				fmt.Println(err)
 			}
