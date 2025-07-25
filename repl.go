@@ -9,8 +9,16 @@ import (
 	"github.com/Plus10Victory/pokedexcli/cliCommands"
 )
 
+// type Config struct {
+// 	Next     *string
+// 	Previous *string
+// }
+
 func startRepl() {
 	scanner := bufio.NewScanner(os.Stdin)
+	var config cliCommands.Config
+	configPointer := &config
+
 	for {
 		fmt.Print("Pokedex > ")
 		scanner.Scan()
@@ -27,7 +35,7 @@ func startRepl() {
 			fmt.Println("Unknown command")
 			continue
 		} else {
-			err := command.Callback()
+			err := command.Callback(configPointer)
 			if err != nil {
 				fmt.Println(err)
 			}
