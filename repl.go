@@ -6,18 +6,12 @@ import (
 	"os"
 	"strings"
 
-	"github.com/Plus10Victory/pokedexcli/cliCommands"
+	"github.com/Plus10Victory/pokedexcli/internal/cliCommands"
+	"github.com/Plus10Victory/pokedexcli/internal/pokedex"
 )
 
-// type Config struct {
-// 	Next     *string
-// 	Previous *string
-// }
-
-func startRepl() {
+func startRepl(config *pokedex.Config) {
 	scanner := bufio.NewScanner(os.Stdin)
-	var config cliCommands.Config
-	configPointer := &config
 
 	for {
 		fmt.Print("Pokedex > ")
@@ -35,7 +29,7 @@ func startRepl() {
 			fmt.Println("Unknown command")
 			continue
 		} else {
-			err := command.Callback(configPointer)
+			err := command.Callback(config)
 			if err != nil {
 				fmt.Println(err)
 			}

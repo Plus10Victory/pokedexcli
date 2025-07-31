@@ -1,14 +1,13 @@
 package cliCommands
 
+import (
+	"github.com/Plus10Victory/pokedexcli/internal/pokedex"
+)
+
 type cliCommand struct {
 	name        string
 	description string
-	Callback    func(*Config) error
-}
-
-type Config struct {
-	Next     *string
-	Previous *string
+	Callback    func(*pokedex.Config) error
 }
 
 func GetCommands() map[string]cliCommand {
@@ -17,11 +16,6 @@ func GetCommands() map[string]cliCommand {
 			name:        "help",
 			description: "Displays a help message",
 			Callback:    HelpCommand,
-		},
-		"exit": {
-			name:        "exit",
-			description: "Exit the Pokedex",
-			Callback:    ExitCommand,
 		},
 		"map": {
 			name:        "map",
@@ -32,6 +26,11 @@ func GetCommands() map[string]cliCommand {
 			name:        "mapb",
 			description: "Displays the previous list of 20 map locations",
 			Callback:    MapbCommand,
+		},
+		"exit": {
+			name:        "exit",
+			description: "Exit the Pokedex",
+			Callback:    ExitCommand,
 		},
 	}
 }

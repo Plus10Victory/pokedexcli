@@ -2,9 +2,11 @@ package cliCommands
 
 import (
 	"fmt"
+
+	"github.com/Plus10Victory/pokedexcli/internal/pokedex"
 )
 
-func HelpCommand(config *Config) error {
+func HelpCommand(config *pokedex.Config) error {
 	_ = config
 	fmt.Println()
 	fmt.Println("Welcome to the Pokedex!")
